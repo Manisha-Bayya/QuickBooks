@@ -29,7 +29,9 @@ def get_all_invoices(request, company_id):
         return render(request, "invoice.html", dict(result=result))
 
     result = _get_all_invoices(company_id)
-    return render(request, "invoice.html", dict(result=result, company_id=company_id))
+    return render(request, "invoice.html", dict(result=result, 
+        company_id=company_id)
+    )
 
 def get_invoice(request, company_id, invoice_id):
     '''
@@ -42,10 +44,12 @@ def get_invoice(request, company_id, invoice_id):
     '''
 
     if not company_id:
-       return JsonResponse({"success": False, "response": "Company ID cannot be empty"})
+        result = {"success": False, "response": "Company ID cannot be empty"}
+        return JsonResponse(result)
 
     if not invoice_id:
-       return JsonResponse({"success": False, "response": "Company ID cannot be empty"})
+        result = {"success": False, "response": "Company ID cannot be empty"}
+        return JsonResponse(result)
 
     result = _get_invoice(company_id, invoice_id)
     return JsonResponse(result)

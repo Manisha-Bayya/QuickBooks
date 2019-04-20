@@ -53,7 +53,9 @@ def _get_all_invoices(company_id):
         list of invoices
     '''
     
-    url = "https://sandbox-quickbooks.api.intuit.com/v3/company/%s/query?query=select * from Invoice" %(company_id)
+    url = "https://sandbox-quickbooks.api.intuit.com"\
+        "/v3/company/%s/query?query=select * "\
+        "from Invoice" %(company_id)
     response = _request_intuit("get", url)
     return response
 
@@ -66,6 +68,8 @@ def _get_invoice(company_id, invoice_id):
         Invoice information
     '''
 
-    url = "https://sandbox-quickbooks.api.intuit.com/v3/company/%s/query?query=select * from Invoice where id = '%s'" %(company_id, invoice_id)
+    url = "https://sandbox-quickbooks.api.intuit.com"\
+        "/v3/company/%s/query?query="\
+        "select * from Invoice where id = '%s'" %(company_id, invoice_id)
     response = _request_intuit("get", url)
     return response
