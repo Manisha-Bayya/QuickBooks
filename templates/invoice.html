@@ -6,22 +6,24 @@
     <p class="text-center"> no invoices! </p>
 {% else %}
 	<h4> Invoices </h4>
-    {% for i in result.response.QueryResponse.Invoice %}
-        <div class="col-sm-4 mb-5">
-            <div class="card" style="width: 18rem;">
-              <div class="card-body">
-                <h5 class="card-title"> {{ i.name }} </h5>
-                <p class="card-text"><b>Bill Id</b>: {{ i.Id }}
-                <br> <b>Total Amount</b>: {{ i.TotalAmt }}
-				<br> <b>Balance Amount</b>: {{ i.Balance }}
-				<br> <b> Shipping Address - city</b>: {{ i.ShipAddr.city }}
-				<br> <b> Billing Email</b>: {{ i.BillEmail.Address }}
-                </p>
-                <a target="_blank" href="/get_invoice/{{ company_id }}/{{ i.Id }}" class="btn btn-outline-success">Know more</a>
-              </div>
-            </div>
-        </div>
-    {% endfor %}
-</div>
+	<div class="row">
+		{% for i in result.response.QueryResponse.Invoice %}
+			<div class="col-sm-4 mb-5">
+				<div class="card" style="width: 18rem;">
+				  <div class="card-body">
+					<h5 class="card-title"> {{ i.name }} </h5>
+					<p class="card-text"><b>Bill Id</b>: {{ i.Id }}
+					<br> <b>Total Amount</b>: {{ i.TotalAmt }}
+					<br> <b>Balance Amount</b>: {{ i.Balance }}
+					<br> <b> Shipping Address - city</b>: {{ i.ShipAddr.city }}
+					<br> <b> Billing Email</b>: {{ i.BillEmail.Address }}
+					</p>
+					<a target="_blank" href="/get_invoice/{{ company_id }}/{{ i.Id }}" class="btn btn-outline-success">Know more</a>
+				  </div>
+				</div>
+			</div>
+		{% endfor %}
+	</div>
+
 {% endif %}
 
