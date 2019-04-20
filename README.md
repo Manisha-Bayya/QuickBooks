@@ -1,5 +1,4 @@
 # QuickBooks
-# simple-django-project
 
 ### Prerequisites
 
